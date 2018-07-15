@@ -16,6 +16,7 @@
 
 <body>
 <script src="js/three.js"></script>
+<script src="js/OrbitControls.js"></script>
 
 <script>
     var scene = new THREE.Scene();
@@ -34,6 +35,8 @@
         camera.updateProjectionMatrix();
     });
 
+    conrtols = new THREE.OrbitControls(camera, renderer.domElement)
+
     // create the shape
 
     var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -47,8 +50,8 @@
 
     // game logic
     var update = function () {
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.005;
+        cube.rotation.x += 0.001;
+        cube.rotation.y += 0.0005;
     };
 
     // draw Scene
