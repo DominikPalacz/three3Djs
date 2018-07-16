@@ -81,6 +81,20 @@
     scene.add(floorCube);
 
 
+    var geometry = new THREE.CubeGeometry(1000, 1000, 1000);
+    var cubeMaterial = [
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/f.png'), side: THREE.DoubleSide}), // r
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/b.png'), side: THREE.DoubleSide}), // b
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/u.png'), side: THREE.DoubleSide}), // u
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/d.png'), side: THREE.DoubleSide}), // d
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/r.png'), side: THREE.DoubleSide}), // r
+        new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/l.png'), side: THREE.DoubleSide}) // l
+    ];
+
+    var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterial);
+    var cube = new THREE.Mesh(geometry, cubeMaterial);
+    scene.add(cube);
+
     var ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
 
