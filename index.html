@@ -55,14 +55,24 @@
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 3;
+    camera.position.z = 10;
 
-    var ambientLight = new THREE.AmbientLight( 0xffffff, 1.5);
+    // Floor
+    var floorGeometry = new THREE.CubeGeometry(10, 1, 10);
+    var florMaterial = new THREE.MeshLambertMaterial({
+        map: new THREE.TextureLoader().load('img/g.jpg'), side: THREE.DoubleSide
+    });
+    var floorCube = new THREE.Mesh(floorGeometry, florMaterial);
+    floorCube.position.y = -5;
+    scene.add(floorCube);
+
+
+    var ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
 
     // game logic
     var update = function () {
-        cube.rotation.x += 0.001;
+        // cube.rotation.x += 0.001;
         cube.rotation.y += 0.0005;
     };
 
