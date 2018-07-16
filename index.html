@@ -19,6 +19,20 @@
 <script src="js/OrbitControls.js"></script>
 
 <script>
+    (function () {
+        var script = document.createElement('script');
+        script.onload = function () {
+            var stats = new Stats();
+            document.body.appendChild(stats.dom);
+            requestAnimationFrame(function loop() {
+                stats.update();
+                requestAnimationFrame(loop)
+            });
+        };
+        script.src = '//rawgit.com/mrdoob/stats.js/master/build/stats.min.js';
+        document.head.appendChild(script);
+    })()
+
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -39,7 +53,7 @@
 
     // create the shape
 
-    var geometry = new THREE.BoxGeometry(2, 2, 2);
+    var geometry = new THREE.BoxGeometry(3, 3, 3);
     var cubeMaterial = [
         new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/1.png'), side: THREE.DoubleSide}),
         new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('img/2.png'), side: THREE.DoubleSide}),
